@@ -1,3 +1,7 @@
+<?php
+header("Location: login.php");
+?>
+
 <!doctype html>
 <html class="no-js" lang="en">
 
@@ -58,10 +62,6 @@
     </div>
 
     <!--====== PRELOADER PART ENDS ======-->
-
-<?php
-header("Location: login.php");
-?>
 
     <!--====== Jquery js ======-->
     <script src="assets/js/vendor/jquery-1.12.4.min.js"></script>
