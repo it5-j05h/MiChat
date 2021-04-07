@@ -26,33 +26,17 @@
 <body>
 
 
-<!--PRELOADER-->
+
 
 </head>
-<body onload="myFunction()" style="margin:0;">
 
-<div id="loader"></div>
-
-<div style="display:none;" id="myDiv" class="animate-bottom">
+<div class="loader">
 
 <?php
 header("Location: login.php");
 ?>
-
 </div>
 
-<script>
-var myVar;
-
-function myFunction() {
-  myVar = setTimeout(showPage, 3000);
-}
-
-function showPage() {
-  document.getElementById("loader").style.display = "none";
-  document.getElementById("myDiv").style.display = "block";
-}
-</script>
 
 <!--[if IE]>
     <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>

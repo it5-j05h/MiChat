@@ -13,12 +13,13 @@ include("auth_session.php");
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
+<div class="loader">
     <div class="form">
         <p>Hey, <?php echo $_SESSION['username']; ?>! ID Number: <?php echo $_SESSION['id']; ?></p>
         <p>You are in user dashboard page.</p>
         <p><a href="logout.php">Logout</a></p>
     </div>
-
+</div>
 
 </body>
 </html>

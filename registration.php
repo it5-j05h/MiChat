@@ -8,6 +8,9 @@
 
 
 <body>
+
+<div class="loader">
+
 <?php
     require('db.php');
     // When form submitted, insert values into the database.
@@ -50,5 +53,8 @@
 <?php
     }
 ?>
+
+</div>
+
 </body>
 </html>
