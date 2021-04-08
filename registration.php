@@ -9,7 +9,6 @@
 
 <body>
 
-<div class="loader">
 
 <?php
     require('db.php');
@@ -54,7 +53,7 @@
     }
 ?>
 
-</div>
+
 
 </body>
 </html>

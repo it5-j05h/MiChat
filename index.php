@@ -30,12 +30,12 @@
 
 </head>
 
-<div class="loader">
+
 
 <?php
 header("Location: login.php");
 ?>
-</div>
+
 
 
 <!--[if IE]>
