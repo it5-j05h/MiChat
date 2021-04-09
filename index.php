@@ -1,76 +1,44 @@
-<!doctype html>
-<html class="no-js" lang="en">
-
-<head>
-    <meta charset="utf-8">
-    
-    <!--====== Title ======-->
-    <title>MiChat</title>
-    
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!--====== Favicon Icon ======-->
-    <link rel="shortcut icon" href="assets/images/favicon.png" type="image/png">
-        
-    
-    <!--====== Default CSS ======-->
-    <link rel="stylesheet" href="assets/css/default.css">
-    
-    <!--====== Style CSS ======-->
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="style.css"/>
-
-</head>
-
-<body>
-
-
-
-
-</head>
-
-
-
 <?php
-header("Location: login.php");
+include('db.php')
 ?>
-
-
-
-<!--[if IE]>
-    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
-  <![endif]--> 
- 
-
-    <!--====== Jquery js ======-->
-    <script src="assets/js/vendor/jquery-1.12.4.min.js"></script>
-    <script src="assets/js/vendor/modernizr-3.7.1.min.js"></script>
-    
-    <!--====== Bootstrap js ======-->
-    <script src="assets/js/popper.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-    
-    <!--====== Slick js ======-->
-    <script src="assets/js/slick.min.js"></script>
-    
-    <!--====== Magnific Popup js ======-->
-    <script src="assets/js/jquery.magnific-popup.min.js"></script>
-    
-    <!--====== Ajax Contact js ======-->
-    <script src="assets/js/ajax-contact.js"></script>
-    
-    <!--====== Isotope js ======-->
-    <script src="assets/js/imagesloaded.pkgd.min.js"></script>
-    <script src="assets/js/isotope.pkgd.min.js"></script>
-    
-    <!--====== Scrolling Nav js ======-->
-    <script src="assets/js/jquery.easing.min.js"></script>
-    <script src="assets/js/scrolling-nav.js"></script>
-   
-    <!--====== Main js ======-->
-    <script src="assets/js/main.js"></script>
-
-
-
-</body>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link href="<style.css" rel="stylesheet" title="Style" />
+        <title>Members Area</title>
+    </head>
+    <body>
+        <div class="content">
+<?php
+//We display a welcome message, if the user is logged, we display it username
+?>
+Hello<?php if(isset($_SESSION['username'])){echo ' '.htmlentities($_SESSION['username'], ENT_QUOTES, 'UTF-8');} ?>,<br />
+Welcome on our website.<br />
+You can <a href="users.php">see the list of users</a>.<br /><br />
+<?php
+//If the user is logged, we display links to edit his infos, to see his pms and to log out
+if(isset($_SESSION['username']))
+{
+//We count the number of new messages the user has
+$nb_new_pm = mysql_fetch_array(mysql_query('select count(*) as nb_new_pm from pm where ((user1="'.$_SESSION['userid'].'" and user1read="no") or (user2="'.$_SESSION['userid'].'" and user2read="no")) and id2="1"'));
+//The number of new messages is in the variable $nb_new_pm
+$nb_new_pm = $nb_new_pm['nb_new_pm'];
+//We display the links
+?>
+<a href="list_pm.php">My personnal messages(<?php echo $nb_new_pm; ?> unread)</a><br />
+<a href="logout.php">Logout</a>
+<?php
+}
+else
+{
+//Otherwise, we display a link to log in and to Sign up
+?>
+<a href="registration.php">Sign up</a><br />
+<a href="login.php">Log in</a>
+<?php
+}
+?>
+		</div>
+	</body>
+</html>
